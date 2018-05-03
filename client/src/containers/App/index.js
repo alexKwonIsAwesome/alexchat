@@ -1,9 +1,13 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import Chat from './../../containers/Chat';
 
 class App extends React.Component {
   render() {
     return (
-      <div>haha</div>
+      <Switch>
+        <Route path="/" component={Chat} />
+      </Switch>
     );
   }
 }
