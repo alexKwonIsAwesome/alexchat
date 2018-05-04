@@ -1,7 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import MessageRow from './../../components/MessageRow';
 import MessageRowOwner from './../../components/MessageRowOwner';
+
+const myUserName = 'Tzuyu Chou';
 
 class Content extends React.Component {
   componentDidMount() {
@@ -11,35 +14,44 @@ class Content extends React.Component {
     }
   }
 
+  renderMessages() {
+    const { messages } = this.props;
+    const messageRow = messages.map((item, index) => {
+      const { username, message, date, image } = item;
+      
+      if (username === myUserName) {
+        return (
+          <MessageRowOwner
+            key={index}
+            username={username}
+            message={message}
+            date={date}
+            image={image}
+          />
+        );
+      }
+      return (
+        <MessageRow
+          key={index}
+          username={username}
+          message={message}
+          date={date}
+          image={image}
+        />
+      );
+    });
+
+    return (
+      <Inner innerRef={(node) => { this.wrapper = node; }} >
+        {messageRow}
+      </Inner>
+    );
+  }
+
   render() {
     return (
       <Wrapper>
-        <Inner innerRef={(node) => { this.wrapper = node; }} >
-          <MessageRow
-            message={'Yeah, i know we have a documents area here in snug, but can\'t quite find where they are located. Did you upload them?'}
-          />
-          <MessageRow
-            message={'Hello!'}
-          />
-          <MessageRow
-            message={'How is your day?'}
-          />
-          <MessageRow
-            message={'Today is my birthday, but as I don\'t have any friends, there are no one celebrating it. I hope i have a friends.'}
-          />
-          <MessageRow
-            message={'Do you hear the people sing? No. I dont fucking hear what people are singing about.'}
-          />
-          <MessageRowOwner
-            message={'What did you say?'}
-          />
-          <MessageRowOwner
-            message={'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.'}
-          />
-          <MessageRow
-            message={'If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text.'}
-          />
-        </Inner>
+        {this.renderMessages()}
       </Wrapper>
     );
   }
@@ -56,5 +68,8 @@ const Inner = styled.div`
   overflow-y: scroll;
 `;
 
+Content.propTypes = {
+  messages: PropTypes.array.isRequired,
+};
 
 export default Content;

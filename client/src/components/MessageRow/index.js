@@ -1,17 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
-function MessageRow ({ message }) {
+function MessageRow ({ username, message, date, image }) {
   return (
     <Wrapper>
       <Profile>
-        <img src={'https://scontent-icn1-1.xx.fbcdn.net/v/t1.0-1/p80x80/16473810_1341861682536945_6515544790253936304_n.jpg?_nc_cat=0&_nc_eui2=v1%3AAeHflGpth5qr2cf_MkDQbs4YmjQEIKsg4rDwtZNl-fL0HWV6BUtVAvC7j2SechV9p87SsZ6FTXced4OEfuXnXydI6sfXA7uZsyvPNZxk2TVC8w&oh=13225579e53c8a153300327cd074dd74&oe=5B5A2AFB'} />
+        <img src={image} />
       </Profile>
       <Message>
         <Info>
-          <span>Alex Kwon</span>
-          <span>1:14 pm</span>
+          <span>{username}</span>
+          <span>{moment(date).format('MM/DD/YYYY HH:mm:ss')}</span>
         </Info>
         <span>{message}</span>
       </Message>
@@ -64,7 +65,10 @@ const Info = styled.div`
 `;
 
 MessageRow.propTypes = {
-  message: PropTypes.string.isRequired
+  username: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+  date: PropTypes.instanceOf(Date),
+  image: PropTypes.string.isRequired,
 };
 
 export default MessageRow;
