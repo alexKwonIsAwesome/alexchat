@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import MessageInput from './../../components/MessageInput';
+import Content from './../../components/Content';
 
 class Chat extends React.Component {
   render() {
@@ -10,8 +11,7 @@ class Chat extends React.Component {
         <Header>
           <span>Alexchat</span>
         </Header>
-        <Content>
-        </Content>
+        <Content />
         <MessageInput />
       </Wrapper>
     );
@@ -32,10 +32,6 @@ const Header = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const Content = styled.div`
-  flex: 1 auto;
 `;
 
 export default Chat;
