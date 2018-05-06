@@ -20,6 +20,7 @@ router.post('/', async function (req, res) {
       username,
       message,
     }).save();
+    res.io.emit('NEW_MESSAGE', doc);
     res.send(doc);
   } catch (e) {
     res.status(400).send(e);
