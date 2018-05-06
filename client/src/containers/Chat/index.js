@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import openSocket from 'socket.io-client';
 
 import MessageInput from './../../components/MessageInput';
 import Content from './../../components/Content';
@@ -15,6 +16,8 @@ class Chat extends React.Component {
   }
 
   componentDidMount() {
+    const socket = openSocket('http://localhost:3001');
+    socket.on('NEW_MESSAGE', this.handleNewMessage);
     axios({
       url: 'http://localhost:3001/messages',
       method: 'get',
@@ -24,6 +27,13 @@ class Chat extends React.Component {
     }).then((response) => {
       const { messages } = response.data;
       this.setState({ messages });
+    });
+  }
+
+  handleNewMessage = (message) => {
+    const { messages } = this.state;
+    this.setState({
+      messages: [ ...messages, message],
     });
   }
 
