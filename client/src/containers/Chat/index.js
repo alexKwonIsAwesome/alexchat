@@ -6,8 +6,8 @@ import openSocket from 'socket.io-client';
 import MessageInput from './../../components/MessageInput';
 import Content from './../../components/Content';
 
-const alexImage = 'https://scontent-icn1-1.xx.fbcdn.net/v/t1.0-1/p80x80/16473810_1341861682536945_6515544790253936304_n.jpg?_nc_cat=0&_nc_eui2=v1%3AAeHflGpth5qr2cf_MkDQbs4YmjQEIKsg4rDwtZNl-fL0HWV6BUtVAvC7j2SechV9p87SsZ6FTXced4OEfuXnXydI6sfXA7uZsyvPNZxk2TVC8w&oh=13225579e53c8a153300327cd074dd74&oe=5B5A2AFB';
-const tzuyuImage = 'https://data.whicdn.com/images/208491227/superthumb.jpg';
+// const alexImage = 'https://scontent-icn1-1.xx.fbcdn.net/v/t1.0-1/p80x80/16473810_1341861682536945_6515544790253936304_n.jpg?_nc_cat=0&_nc_eui2=v1%3AAeHflGpth5qr2cf_MkDQbs4YmjQEIKsg4rDwtZNl-fL0HWV6BUtVAvC7j2SechV9p87SsZ6FTXced4OEfuXnXydI6sfXA7uZsyvPNZxk2TVC8w&oh=13225579e53c8a153300327cd074dd74&oe=5B5A2AFB';
+// const tzuyuImage = 'https://data.whicdn.com/images/208491227/superthumb.jpg';
 
 class Chat extends React.Component {
 
